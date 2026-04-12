@@ -1,0 +1,6 @@
+@Jantee.Api_HostAddress = http://localhost:5037
+
+GET {{Jantee.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

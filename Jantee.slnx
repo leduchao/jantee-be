@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Jantee.Api/Jantee.Api.csproj" />
+    <Project Path="src/Jantee.BuildingBlocks/Jantee.BuildingBlocks.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Users/">
+    <Project Path="src/Modules/Users/Jantee.Modules.Users.Application/Jantee.Modules.Users.Application.csproj" />
+    <Project Path="src/Modules/Users/Jantee.Modules.Users.Domain/Jantee.Modules.Users.Domain.csproj" />
+    <Project Path="src/Modules/Users/Jantee.Modules.Users.Infrastructure/Jantee.Modules.Users.Infrastructure.csproj" />
+    <Project Path="src/Modules/Users/Jantee.Modules.Users.Presentation/Jantee.Modules.Users.Presentation.csproj" />
+  </Folder>
+</Solution>

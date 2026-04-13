@@ -1,8 +1,8 @@
 using Jantee.BuildingBlocks.Core.Cqrs;
+using Jantee.BuildingBlocks.Core.Result;
 using Jantee.BuildingBlocks.Web;
 using Jantee.Modules.Users.Application.Features.SignUp;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Jantee.Modules.Users.Presentation.Endpoints.SignUp;
@@ -18,9 +18,9 @@ public class SignUpEndpoint : IMinimalEndpoint
             async (Request request, ICommandDispatcher dispatcher, CancellationToken ct = default) =>
             {
                 var command = new SignUpCommand(request.Email, request.Username, request.Password);
-                var response = await dispatcher.Dispatch<SignUpCommand, SignUpResponseDto>(command, ct);
+                var result = await dispatcher.Dispatch<SignUpCommand, Result<SignUpResponseDto>>(command, ct);
 
-                return Results.Ok(new { message = "Register user succeeded", data = response });
+                return result.ToHttpResult();
             })
             .WithName("SignUp");
 

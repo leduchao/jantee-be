@@ -9,11 +9,10 @@
   <ItemGroup>
     <Folder Include="Endpoints/" />
     <Folder Include="Endpoints/SignUp/" />
-    <Folder Include="Extensions/" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Jantee.Modules.Users.Application\Jantee.Modules.Users.Application.csproj" />
+    <ProjectReference Include="..\Jantee.Modules.Users.Infrastructure\Jantee.Modules.Users.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,16 @@
+using Jantee.BuildingBlocks.Core.Cqrs;
+using Jantee.BuildingBlocks.Core.Cqrs.Implements;
 using Jantee.BuildingBlocks.Web;
-using Jantee.Modules.Users.Infrastructure.Extensions;
 using Jantee.Modules.Users.Presentation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Users Modules
-builder.Services.AddUsersInfrastructure();
-builder.AddUsersPresentation();
+// Users Module
+builder.AddUsersModule();
+
+// CQRS Implement
+builder.Services.AddScoped<IQueryDispatcher, QueryDispatcher>();
+builder.Services.AddScoped<ICommandDispatcher, CommandDispatcher>();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -24,28 +28,10 @@ app.UseHttpsRedirection();
 
 app.MapMinimalEndpoints();
 
-var summaries = new[]
+app.MapGet("/", () =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    return Results.Ok(new { message = "Hello, World!"});
 })
-.WithName("GetWeatherForecast");
+.WithName("HelloWorld");
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

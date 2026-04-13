@@ -4,6 +4,10 @@
     <ProjectReference Include="..\Jantee.Modules.Users.Domain\Jantee.Modules.Users.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions/" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

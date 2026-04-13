@@ -1,4 +1,4 @@
-## Go to the User.Infrastructure is placed then run these commands in terminal
+## Go to the Users.Infrastructure project is placed then run these commands in terminal
 
 ### Add migration:
 

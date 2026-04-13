@@ -42,7 +42,7 @@ public static class MinimalApiExtensions
     /// Map Minimal Endpoints.
     /// </summary>
     /// <param name="builder"></param>
-    /// <returns>IEndpointRouteBuilder</returns>
+    /// <returns>IEndpointRouteBuilder.</returns>
     public static IEndpointRouteBuilder MapMinimalEndpoints(this IEndpointRouteBuilder builder)
     {
         var scope = builder.ServiceProvider.CreateScope();

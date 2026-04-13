@@ -2,5 +2,5 @@ namespace Jantee.BuildingBlocks.Core.Cqrs;
 
 public interface IQueryDispatcher
 {
-    Task<TQueryResult> Dispatch<TQuery, TQueryResult>(TQuery query, CancellationToken ct);
+    Task<TResult> Dispatch<TResult>(IQuery<TResult> query, CancellationToken ct);
 }

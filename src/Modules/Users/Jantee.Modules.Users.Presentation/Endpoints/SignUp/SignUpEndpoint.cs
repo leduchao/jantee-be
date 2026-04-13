@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Jantee.Modules.Users.Presentation.Endpoints.SignUp;
 
-public record Request(string Email, string Username, string Password);
-
 public class SignUpEndpoint : IMinimalEndpoint
 {
     public IEndpointRouteBuilder MapEndpoint(IEndpointRouteBuilder builder)
@@ -18,11 +16,11 @@ public class SignUpEndpoint : IMinimalEndpoint
             async (Request request, ICommandDispatcher dispatcher, CancellationToken ct = default) =>
             {
                 var command = new SignUpCommand(request.Email, request.Username, request.Password);
-                var result = await dispatcher.Dispatch<SignUpCommand, Result<SignUpResponseDto>>(command, ct);
+                var result = await dispatcher.Dispatch(command, ct);
 
                 return result.ToHttpResult();
             })
-            .WithName("SignUp");
+            .WithName(nameof(SignUp));
 
         return builder;
     }

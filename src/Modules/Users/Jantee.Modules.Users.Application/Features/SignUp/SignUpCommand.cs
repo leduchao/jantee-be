@@ -3,11 +3,11 @@ using Jantee.BuildingBlocks.Core.Result;
 
 namespace Jantee.Modules.Users.Application.Features.SignUp;
 
-public record SignUpCommand(string Email, string Username, string Password);
+public record SignUpCommand(string Email, string Username, string Password) : ICommand<Result<SignUpResponseDto>>;
 
 public record SignUpResponseDto(string Email, string Username, string Password, DateTime CreatedAt);
 
-public class SignUpHandler : ICommandHandler<SignUpCommand, Result<SignUpResponseDto>>
+public class SignUpCommandHandler : ICommandHandler<SignUpCommand, Result<SignUpResponseDto>>
 {
     public async Task<Result<SignUpResponseDto>> Handle(SignUpCommand command, CancellationToken ct)
     {

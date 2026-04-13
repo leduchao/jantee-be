@@ -11,6 +11,11 @@ public static class UsersCqrsExtension
         services.Scan(scan => scan
             .FromAssemblies(assemblies)
             .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
+        services.Scan(scan => scan
+            .FromAssemblies(assemblies)
             .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());

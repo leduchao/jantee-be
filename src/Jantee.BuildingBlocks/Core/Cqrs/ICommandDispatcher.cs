@@ -2,5 +2,5 @@ namespace Jantee.BuildingBlocks.Core.Cqrs;
 
 public interface ICommandDispatcher
 {
-    Task<TCommandResult> Dispatch<TCommand, TCommandResult>(TCommand command, CancellationToken ct);
+    Task<TResult> Dispatch<TResult>(ICommand<TResult> command, CancellationToken ct);
 }

@@ -10,11 +10,9 @@ public static class UsersPresentationExtension
 {
     public static WebApplicationBuilder AddUsersModule(this WebApplicationBuilder builder)
     {
-        var asssembly = typeof(UsersApplicationRoot).Assembly;
-
-        builder.Services.AddUsersCqrs(assemblies: asssembly);
+        builder.Services.AddUsersCqrs(assemblies: typeof(UsersApplicationRoot).Assembly);
         builder.Services.AddUsersInfrastructure(builder.Configuration);
-        builder.AddMinimalEndpoints(assemblies: asssembly);
+        builder.AddMinimalEndpoints(assemblies: typeof(UsersPresentationRoot).Assembly);
         
         return builder;
     }
